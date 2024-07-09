@@ -3,9 +3,11 @@ from jose import jwt, JWTError
 from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from typing import Optional
-from models import fake_users_db, blocklist_token
+
 from constants import SECRET_KEY, ALGORITHM
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from models import fake_users_db, blocklist_token
+
 
 class AuthHandler:
     security = HTTPBearer()
@@ -70,4 +72,3 @@ class AuthHandler:
             )
         user = await self.get_user(username)
         return user
-
